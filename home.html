@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+</head>
+<body>
+    <!-- HOME PAGE -->
+    <div class="home-page">
+        <header>
+            <div class="header-div">
+                <h1>LEMONPLEX</h1>
+                <img src="src/search.svg" id="searchIcon-home" class="searchIcon-class">
+                <input type="text" class="searchbar" id="searchbar-home" placeholder="Search for animes">
+            </div>
+        </header>
+
+        <section class="recommended-section">
+            <!-- Slider main container -->
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper"></div>
+            </div>
+            
+        </section>
+
+        <div class="bottom-div">
+            <button id="homeBtn" class="bottom-btn bottom-home">
+                <img src="src/home.svg" id="home-img">
+            </button>
+            <button id="download-pageBtn" class="bottom-btn bottom-download">
+                <img src="src/download.svg" id="download-img">
+            </button>
+        </div>
+    </div>
+
+    <!-- SEARCH RESULT PAGE -->
+    <div class="search-page">
+        <header>
+            <div class="header-div">
+                <img src="src/search.svg" id="searchIcon-result" class="searchIcon-class">
+                <input type="text" class="searchbar" id="searchbar-result" placeholder="Search for animes">
+            </div>
+        </header>
+
+        <div class="bottom-div">
+            <button class="bottom-btn bottom-home">
+                <img src="src/home.svg" id="home-img">
+            </button>
+            <button class="bottom-btn bottom-download">
+                <img src="src/download.svg" id="download-img">
+            </button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

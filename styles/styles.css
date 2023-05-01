@@ -1,0 +1,213 @@
+@font-face {
+    font-family: 'MediumText';
+    src: url('fonts/Khyay-Regular.ttf') format('truetype');
+}
+body {
+    background-color: #1C1C1C;
+    margin: 0;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    color: #DB202C;
+    font-size: 50px;
+    font-family: 'Bebas Neue', cursive;
+    margin-bottom: 20px;
+    user-select: none;
+}
+
+.header-div {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.searchbar {
+    width: 300px;
+    height: 60px;
+    border-radius: 18px;
+    font-size: 25px;
+    font-family: "MediumText";
+    text-indent: 60px;
+    border: none;
+    position: relative;
+}
+.searchbar::placeholder {
+    font-size: 20px;
+    color: #7E7E7E;
+}
+
+.searchIcon-class {
+    position: absolute;
+    user-select: none;
+    z-index: 2;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+#searchIcon-result {
+    margin-top: 41px;
+    margin-left: 16px;
+}
+
+.bottom-div {
+    position: fixed;
+    bottom:0;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    background-color: #262626;
+    height: 75px;
+    gap: 150px;
+    z-index: 4;
+}
+
+.bottom-btn {
+    background-color: #262626;
+    border: none;
+}
+
+.recommended-section {
+    margin-top: 40px;
+}
+
+.recommended-img {
+    object-fit: cover;
+    height: 310px;
+}
+
+h2 {
+    color: white;
+    font-family: "MediumText";
+    margin-top: 15px;
+    margin-bottom: 0px;
+}
+
+h3 {
+    color: #7E7E7E;
+    font-family: "MediumText";
+    font-size: 20px;
+    margin-top: 0px;
+}
+
+/* SWIPER */
+.swiper {
+    width: 100%;
+    height: cover;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* SEARCH PAGE */
+
+#searchbar-result {
+    margin-top: 25px;
+}
+
+.result-div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bg-torrent-result {
+    user-select: none;
+    pointer-events: none;
+    position: relative;
+    object-fit: cover;
+    width: 100%;
+    height: 114px;
+    opacity: 40%;
+    transition: 0.2s;
+}
+
+.download-btn-div, .torrent-infos {
+    display: flex;
+    justify-content: center;
+}
+
+.download-btn {
+    position: absolute;
+    z-index: 3;
+    margin-top: 25px;
+    width: 255px;
+    height: 50px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+    color: #DB202C;
+    border: none;
+    user-select: none;
+    transition: 0.1s;
+}
+.download-btn:active {
+    transform: scale(0.9);
+    transition: 0.1s;
+    background-color: #DB202C;
+    color: white;
+}
+
+.torrent-info-p {
+    position: absolute;
+    color: white;
+    font-family: "MediumText";
+    margin-top: 93px;
+    font-size: 24px;
+    z-index: 2;
+    user-select: none;
+}
+
+.torrent-title-p {
+    user-select: none;
+    position: absolute;
+    color: white;
+    font-family: "MediumText";
+    margin-top: 40px;
+    font-size: 15px;
+    width: 90%;
+    z-index: 2;
+    opacity: 0;
+    overflow: hidden;
+}
+
+@keyframes fade {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+}
+@keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+}
+
+.fade-element {
+    animation-name: fade;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards; /* Add this line */
+    opacity: 1;
+}
+
+.fadein-element {
+    animation-name: fade-in;
+    animation-duration: 0.2s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards; /* Add this line */
+    opacity: 0;
+}
