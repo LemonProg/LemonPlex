@@ -35,17 +35,14 @@ h1 {
     border: none;
     position: relative;
 }
+#searchbar-result {
+    text-align: center;
+    text-indent: 0;
+}
+
 .searchbar::placeholder {
     font-size: 20px;
     color: #7E7E7E;
-}
-
-.searchIcon-class {
-    position: absolute;
-    user-select: none;
-    z-index: 2;
-    margin-top: 15px;
-    margin-left: 15px;
 }
 
 #searchIcon-result {
@@ -71,25 +68,32 @@ h1 {
 }
 
 .recommended-section {
-    margin-top: 40px;
+    margin-top: 50px;
 }
 
 .recommended-img {
     object-fit: cover;
-    height: 310px;
+    height: 250px;
+}
+
+.div-title-recommended {
+    display: flex;
+    justify-content: center;
 }
 
 h2 {
     color: white;
     font-family: "MediumText";
     margin-top: 15px;
+    font-size: 23px;
     margin-bottom: 0px;
+    width: 300px;
 }
 
 h3 {
     color: #7E7E7E;
     font-family: "MediumText";
-    font-size: 20px;
+    font-size: 17px;
     margin-top: 0px;
 }
 
@@ -111,7 +115,8 @@ h3 {
 /* SEARCH PAGE */
 
 #searchbar-result {
-    margin-top: 25px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .result-div {
@@ -177,6 +182,25 @@ h3 {
     z-index: 2;
     opacity: 0;
     overflow: hidden;
+}
+
+.search-gender {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.gender-btn {
+    font-size: 15px;
+    padding: 15px 35px;
+    font-family: "MediumText";
+    margin-bottom: 10px;
+    background-color: white;
+    border: none;
+}
+
+.active {
+    background-color: #DB202C;
+    color: white;
 }
 
 @keyframes fade {

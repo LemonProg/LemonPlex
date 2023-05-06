@@ -61,17 +61,6 @@ section {
     position: relative;
 }
 
-.border-active::before {
-    content: '';
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    border-top: 3px solid white;
-    border-bottom: 3px solid white;
-}
-
 .bg-download-img {
     width: 100%;
     object-fit: cover;

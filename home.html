@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="shortcut icon" href="src/favicon.png" type="image/x-icon">
 </head>
 <body>
     <!-- HOME PAGE -->
@@ -18,7 +19,6 @@
         <header>
             <div class="header-div">
                 <h1>LEMONPLEX</h1>
-                <img src="src/search.svg" id="searchIcon-home" class="searchIcon-class">
                 <input type="text" class="searchbar" id="searchbar-home" placeholder="Search for animes">
             </div>
         </header>
@@ -45,10 +45,13 @@
     <div class="search-page">
         <header>
             <div class="header-div">
-                <img src="src/search.svg" id="searchIcon-result" class="searchIcon-class">
                 <input type="text" class="searchbar" id="searchbar-result" placeholder="Search for animes">
             </div>
         </header>
+        <div class="search-gender">
+            <button class="gender-btn active" id="anime-btn">Nyaa</button>
+            <button class="gender-btn" id="movie-btn">ThePirateBay</button>
+        </div>
 
         <div class="bottom-div">
             <button class="bottom-btn bottom-home">

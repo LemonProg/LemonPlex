@@ -16,6 +16,7 @@
     "express": "^4.18.2",
     "moviedb-promise": "^3.4.0",
     "nyaapi": "^2.4.4",
-    "qbittorrent-api-v2": "^1.2.2"
+    "qbittorrent-api-v2": "^1.2.2",
+    "torrent-search-api": "^2.1.4"
   }
 }

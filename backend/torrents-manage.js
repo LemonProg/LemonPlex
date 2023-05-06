@@ -4,7 +4,7 @@ const api = require('qbittorrent-api-v2')
 const cors = require('cors');
 const { MovieDb } = require('moviedb-promise');
 
-const moviedb = new MovieDb('TMDB KEY')
+const moviedb = new MovieDb('KEY')
 const imageLink = "https://image.tmdb.org/t/p/original"
 
 const findMovie = async (title) => {
@@ -24,7 +24,7 @@ const findMovie = async (title) => {
     }
 }
  
-api.connect('http://192.168.1.175:8080/', 'admin', 'adminadmin')
+api.connect('http://192.168.1.157:8080/', 'admin', 'adminadmin')
     .then(qbt => {
         const app = express();
         app.use(bodyParser.json());

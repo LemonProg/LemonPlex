@@ -5,11 +5,11 @@ const downloadPageBtn = document.querySelector('.bottom-download');
 const done = document.querySelector('.done');
 const infos_section = document.querySelector('.infos-section');
 
-const imageLink = "https://image.tmdb.org/t/p/original"
+const imageLink = "https://image.tmdb.org/t/p/original";
 
-const website_ip = "http://192.168.1.119/"
-const backend_ip = "http://192.168.1.119:2999/"
-const backend_ip_home = "http://192.168.1.119:3000/"
+const website_ip = "http://192.168.1.119:5500/";
+const backend_ip = "http://192.168.1.119:2999/";
+const backend_ip_home = "http://192.168.1.119:3000/";
 
 // Scroll func
 window.addEventListener('scroll', () => {
@@ -134,11 +134,10 @@ fetchData()
                     const completed = infos[i].completed;
                     const hours = infos[i].eta.h;
                     const mins = infos[i].eta.m;
-                    const state = infos[i].state
+                    const state = infos[i].state;
 
                     if (state === "downloading") {
                         single_div.addEventListener('click', () => {
-                            single_div.className = "single-download-div border-active";
                             sendAction('pause', infos[i].hash);
                             window.location.reload();
                         });
@@ -151,30 +150,6 @@ fetchData()
                         }
                         progress_done.style.width = (completed * 0.85) + "%";
 
-                        single_div.addEventListener('touchstart', () => {
-                            // Start the timer when the user touches the element
-                            let timer = setTimeout(() => {
-                                let p = 0;
-                                let delete_timer = setInterval(() => {
-                                    p++;
-                                    progress_done.style.width = p + "%";
-                                    title.textContent = "DELETING";
-                                    p_infos.textContent = name;
-                                    clearInterval(boucle);
-                                    
-                                    if(p === 85) {
-                                        clearInterval(delete_timer);
-                                        let hash = infos[i].hash
-                                        deleteTorrent(hash);
-                                        window.location.reload();
-                                    }
-                                }, 30)
-                                
-                                single_div.addEventListener('touchend', () => {
-                                    window.location.reload();
-                                });
-                            }, 1500);
-                        });
                     } else if (state === "stalledDL"){
                         title.textContent = name;
                         p_infos.textContent = `BLOQUÉ`
@@ -184,7 +159,6 @@ fetchData()
                     } else {
                         clearInterval(boucle);
                         single_div.addEventListener('click', () => {
-                            single_div.className = "single-download-div border-active";
                             sendAction('resume', infos[i].hash)
                             window.location.reload();
                         });
@@ -208,6 +182,7 @@ fetchData()
                                         clearInterval(delete_timer);
                                         let hash = infos[i].hash
                                         deleteTorrent(hash);
+                                        
                                         window.location.reload();
                                     }
                                 }, 30)

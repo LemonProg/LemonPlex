@@ -3,12 +3,15 @@ const bodyParser = require('body-parser');
 const { qBittorrentClient } = require('@robertklep/qbittorrent');
 const cors = require('cors');
 const nyaapi = require('nyaapi');
+const TorrentSearchApi = require('torrent-search-api');
 const { MovieDb } = require('moviedb-promise');
 
-const client = new qBittorrentClient("http://192.168.1.175:8080/", 'admin', "adminadmin");
+const client = new qBittorrentClient("http://192.168.1.157:8080/", 'admin', "adminadmin");
 console.log("qBittorrent running...");
 
-const moviedb = new MovieDb('TMDB KEY')
+TorrentSearchApi.enableProvider('ThePirateBay');
+
+const moviedb = new MovieDb('KEY')
 const imageLink = "https://image.tmdb.org/t/p/original"
 
 const app = express();
@@ -20,6 +23,7 @@ const findMovie = async (title) => {
     title = title.replace(/(\s)*vostfr(\s)*/i, "");
     title = title.replace(/(\s)*vf(\s)*/i, "");
     title = title.replace(/(\s)*MULTI(\s)*/i, "");
+    title = title.replace(/(\s)*FRENCH(\s)*/i, "");
 
     try{
         const res = await moviedb.searchTv(title);
@@ -60,6 +64,31 @@ app.post('/query', async (req, res) => {
         .catch(error => {
             console.log(error);
         });
+});
+
+app.post('/movie', async (req, res) => {
+    const query = req.body.query;
+
+    // Search torrent
+    TorrentSearchApi.search(req.body.query, 'Video', 10)
+    .then(torrents => {
+        let array = [];
+        findMovie(query).then(image => {
+            torrents.forEach(torrent => {                
+                array.push({
+                    torrent_name: torrent.title,
+                    torrent_size: torrent.size,
+                    seeds: torrent.seeds,
+                    poster: image,
+                    magnet: torrent.magnet,
+                })
+            });
+            res.send(array);
+        })
+    })
+    .catch(error => {
+        console.log(error);
+    });
 });
 
 app.post('/start', async (req) => {

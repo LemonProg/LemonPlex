@@ -9,37 +9,48 @@ const bottom_div = document.querySelectorAll('.bottom-div')
 const searchbar_home = document.querySelector("#searchbar-home");
 const searchbar_result = document.querySelector("#searchbar-result");
 
-const searchIcon_home = document.querySelector('#searchIcon-home');
-const searchIcon_result = document.querySelector('#searchIcon-result');
+const anime_btn = document.querySelector('#anime-btn');
+const movie_btn = document.querySelector('#movie-btn');
 
 const imageLink = "https://image.tmdb.org/t/p/original"
 
-const website_ip = "http://192.168.1.119/"
+const website_ip = "http://192.168.1.119:5500/"
 const backend_ip = "http://192.168.1.119:3000/"
 
 search_page.style.display = "none";
 
-searchbar_home.addEventListener('input', () => {
-    if (searchbar_home.scrollWidth > searchbar_home.clientWidth) {
-        searchIcon_home.style.display = "none";
-    } else {
-        searchIcon_home.style.display = "block";
-    }
-});
-searchbar_result.addEventListener('input', () => {
-    if (searchbar_result.scrollWidth > searchbar_result.clientWidth) {
-        searchIcon_result.style.display = "none";
-    } else {
-        searchIcon_result.style.display = "block";
-    }
-});
+let gender_state = "anime";
+
+movie_btn.addEventListener('click', () => {
+    gender_state = "movie";
+
+    // Styles
+    anime_btn.classList.remove("active");
+    movie_btn.classList.add("active");
+
+    sendInfosFromResult(searchbar_result.value, "movie");
+})
+
+anime_btn.addEventListener('click', () => {
+    gender_state = "anime";
+
+    // Styles
+    movie_btn.classList.remove("active");
+    anime_btn.classList.add("active");
+
+    sendInfosFromResult(searchbar_result.value, "query");
+})
 
 searchbar_home.addEventListener('change', () => {
     // Send query to backend
     sendInfos(searchbar_home.value, "query");
 });
 searchbar_result.addEventListener('change', () => {
-    sendInfosFromResult(searchbar_result.value, "query");
+    if (gender_state === "anime") {
+        sendInfosFromResult(searchbar_result.value, "query");
+    } else {
+        sendInfosFromResult(searchbar_result.value, "movie");
+    }
 });
 
 homeBtn.forEach(element => {
@@ -52,9 +63,6 @@ downloadPageBtn.forEach(element => {
         window.location.href = website_ip + 'Code/download.html';
     });
 });
-
-
-
 
 fetch(backend_ip + 'recommended', {
     method: 'POST',
@@ -78,19 +86,22 @@ fetch(backend_ip + 'recommended', {
         img.src = imageLink + data.poster;
         div.appendChild(img);
 
+        const divTitle = document.createElement('div');
+        divTitle.className = "div-title-recommended";
+        div.appendChild(divTitle);
+
         const title = document.createElement('h2');
         title.textContent = data.torrent_name
         const genre = document.createElement('h3');
         genre.textContent = "Serie"
 
-        div.appendChild(title);
+        divTitle.appendChild(title);
         div.appendChild(genre);
 
-        div.addEventListener('click', () => {
+        img.addEventListener('click', () => {
             query = title.textContent;
             searchbar_home.value = query
             sendInfos(query, "query");
-            console.log("clicked");
         })
     });
 
@@ -187,6 +198,12 @@ function createNewResult(size, seeds, torrent_name, poster, magnet) {
     img.src = poster;
     img.className = "bg-torrent-result";
     result_div.appendChild(img);
+
+    if (img.src === website_ip +  "Code/undefined") {
+        img.src = website_ip + "/Code/src/chain.jpg"
+    } else if (img.src === imageLink + "null") {
+        img.src = website_ip + "/Code/src/chain.jpg"
+    }
 
     // trigger elements
     download_btn.addEventListener('click', () => {
