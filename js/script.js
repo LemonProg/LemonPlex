@@ -14,8 +14,8 @@ const movie_btn = document.querySelector('#movie-btn');
 
 const imageLink = "https://image.tmdb.org/t/p/original"
 
-const website_ip = "http://192.168.1.119:5500/"
-const backend_ip = "http://192.168.1.119:3000/"
+const website_ip = "https://lemonprog.github.io/LemonPlex/"
+const backend_ip = "https://91.166.70.11:3000/"
 
 search_page.style.display = "none";
 
