@@ -55,7 +55,7 @@ searchbar_result.addEventListener('change', () => {
 
 homeBtn.forEach(element => {
     element.addEventListener('click', () => {
-        window.location.href = website_ip + 'Code/home.html';
+        window.location.href = website_ip + 'Code/index.html';
     });
 });
 downloadPageBtn.forEach(element => {

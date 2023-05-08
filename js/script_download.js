@@ -21,7 +21,7 @@ window.addEventListener('scroll', () => {
 
 // Bottom redirect btn
 homeBtn.addEventListener('click', () => {
-    window.location.href = website_ip + 'Code/home.html';
+    window.location.href = website_ip + 'Code/index.html';
 });
 downloadPageBtn.addEventListener('click', () => {
     window.location.href = website_ip + 'Code/download.html';
